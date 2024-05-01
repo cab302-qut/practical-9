@@ -1,16 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.javafxthread.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxthread.HelloController">
+  <tabs>
+    <Tab text="Scheduled Messages">
+         <content>
+            <SplitPane dividerPositions="0.8006465517241379" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="38.0" text="History">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <TextArea fx:id="historyTextArea" editable="false" layoutX="14.0" layoutY="63.0" prefHeight="221.0" prefWidth="574.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Note: Messages are sent with the delay specified. The messages sent are recorded in the History text box." />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="600.0">
+                     <children>
+                        <TextField fx:id="newMessageTextField" layoutX="14.0" layoutY="32.0" prefHeight="26.0" prefWidth="426.0" text="Test Message 0" />
+                        <Spinner fx:id="delaySpinner" layoutX="449.0" layoutY="32.0" prefHeight="26.0" prefWidth="85.0">
+                            <valueFactory>
+                                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="2" max="10" min="0" />
+                            </valueFactory>
+                        </Spinner>
+                        <Button fx:id="sendButton" layoutX="542.0" layoutY="33.0" mnemonicParsing="false" onAction="#onSendButtonClicked" text="Send" />
+                        <Label layoutX="14.0" layoutY="12.0" text="Message" />
+                        <Label layoutX="450.0" layoutY="12.0" text="Delay (seconds)" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </content></Tab>
+    <Tab text="Remote Users">
+         <content>
+            <SplitPane dividerPositions="0.4" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="75.0" text="Local Users">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <ListView fx:id="localListView" layoutX="14.0" layoutY="98.0" prefHeight="254.0" prefWidth="210.0" />
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="57.0" prefWidth="216.0" text="Note: Searches for users by name from a remote API, and optionally copy to the local &quot;storage&quot;." wrapText="true" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Online Users">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <ListView fx:id="remoteListView" layoutX="13.0" layoutY="78.0" prefHeight="274.0" prefWidth="330.0" />
+                        <TextField fx:id="searchTextField" layoutX="13.0" layoutY="38.0" prefHeight="26.0" prefWidth="119.0" promptText="Search by name..." />
+                        <Button fx:id="searchButton" layoutX="140.0" layoutY="38.0" mnemonicParsing="false" onAction="#onUsersSearchButtonClicked" text="Search" />
+                        <Button fx:id="clearButton" layoutX="201.0" layoutY="38.0" mnemonicParsing="false" onAction="#onClearButtonClicked" text="Clear" />
+                        <Button fx:id="copyButton" layoutX="251.0" layoutY="38.0" mnemonicParsing="false" onAction="#onCopyButtonClicked" text="Copy Selected" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </content></Tab>
+  </tabs>
+</TabPane>
