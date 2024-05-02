@@ -14,7 +14,7 @@ Don't be afraid to ask questions in class if you get stuck, or even if you just 
 Before we begin, you will need to clone the repository from https://github.com/cab302-qut/threads-prac.
 
 ```
-git clone https://github.com/qut-cab302/prac11.git
+https://github.com/cab302-qut/threads-prac.git
 ```
 
 ## Introduction
