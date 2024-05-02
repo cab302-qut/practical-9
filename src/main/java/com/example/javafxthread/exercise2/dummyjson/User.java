@@ -3,10 +3,10 @@ import java.util.Objects;
 
 // TODO: Convert this class to a record
 // To ensure its correctness, find and run the UserTests class in the test/java directory
-public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
+public final class User {
+    private final String firstName;
+    private final String lastName;
+    private final String email;
 
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;

@@ -1,9 +1,11 @@
 package com.example.javafxthread.exercise2.dummyjson;
 
+import java.util.Arrays;
+
 // TODO: Convert this class to a record
 // To ensure its correctness, find and run the UsersTests class in the test/java directory
-public class Users {
-    private User[] users;
+public final class Users {
+    private final User[] users;
     public Users(User[] users) {
         this.users = users;
     }
@@ -13,7 +15,7 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "users=" + users +
+                "users=" + Arrays.toString(users) +
                 '}';
     }
     @Override

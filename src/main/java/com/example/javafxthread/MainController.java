@@ -9,7 +9,7 @@ import javafx.scene.control.*;
  * Controller for the Hello view.
  * Handles user interactions and updates the view accordingly.
  */
-public class HelloController {
+public class MainController {
     @FXML
     private TextField newMessageTextField;
     @FXML
