@@ -37,6 +37,7 @@ The code for this exercise can be found in the `excercise1` package, which inclu
 > [!IMPORTANT]
 > 
 > **Your Task**
+> 
 > Currently, the `scheduleMessage(String message, int delay)` method displays the message immediately, without any delay.
 > You need to modify this method to display the message after the specified delay, following the suggestions in the comments.
 > ```java
@@ -101,6 +102,10 @@ The code for this exercise can be found in the `excercise2` package, which conta
 - A `User` class (with `firstName`, `lastName`, and `email` fields) and 
 - A `Users` class (with a `User[] users` field).
 
+> [!IMPORTANT]
+> 
+> **Your Task**
+> 
 > Currently, clicking the "Search" button in the application displays a list of mock users.
 >
 > Your task is to complete the `searchUsers(String search)` method in the `RemoteUsersManager` class. This method should get data from the `https://dummyjson.com/users/search?q={search}` REST API, and return a `Users` object containing the users found. You may follow the instructions in the comments.
