@@ -28,12 +28,23 @@ public class MessageScheduler {
      * @param delay the delay (in seconds) before the message is displayed
      */
     public void scheduleMessage(String message, int delay) {
-        // TODO: Modify this method to:
         // 1. Create a new Thread
-        // 2. In a try block, call Thread.sleep(delay * 1000) to sleep the thread for the specified delay.
-        // 3. In a catch block, if an InterruptedException is thrown, throw a new RuntimeException with the caught exception as the cause
-        // 4. Call historyTextArea.appendText(message + "\n") to append the message to the text area
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 2. In a try block, call Thread.sleep(delay * 1000) to sleep the thread for the specified delay.
+                    Thread.sleep(delay * 1000);
+                    // 4. Call historyTextArea.appendText(message + "\n") to append the message to the text area
+                    historyTextArea.appendText(message + "\n");
+                } catch (InterruptedException e) {
+                    // 3. In a catch block, if an InterruptedException is thrown, throw a new RuntimeException with the caught exception as the cause
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        Thread thread = new Thread(task);
         // 5. Start the thread
-        historyTextArea.appendText(message + "\n");
+        thread.start();
     }
 }

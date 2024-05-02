@@ -38,17 +38,28 @@ public class RemoteUsersManager {
      * @param search the search string
      */
     public void searchUsers(String search) {
-        // TODO: Replace this mock implementation with actual search logic on a remote API
-        // 1. Create a new Fetcher<Users>(Users.class) object
-        // 2. Construct the URL "https://dummyjson.com/users/search?q=" + search as a String
-        // 3. Call fetcher.get(url), which returns a Users object, which has a .users() method that returns an array of User objects
-        // 4. You may run the application and test the search functionality
-        //    but will find that clicking on the search button freezes the UI
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 1. Create a new Fetcher<Users>(Users.class) object
+                    Fetcher<Users> fetcher = new Fetcher<>(Users.class);
+                    // 2. Construct the URL "https://dummyjson.com/users/search?q=" + search as a String
+                    String url = "https://dummyjson.com/users/search?q=" + search;
+                    // 3. Call fetcher.get(url), which returns a Users object, which has a .users() method that returns an array of User objects
+                    User[] users = fetcher.get(url).users();
+                    // Clear the list and add the fetched users
+                    clearUsers();
+                    remoteListView.getItems().addAll(users);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
         // 5. Wrap all the code in this method in a new Thread
+        Thread thread = new Thread(task);
         // 6. Start the thread
-        User[] users = getMockUsers();
-        clearUsers();
-        remoteListView.getItems().addAll(users);
+        thread.start();
     }
     /**
      * Clears the list of remote users.

@@ -1,23 +1,6 @@
 package com.example.javafxthread.exercise2.dummyjson;
 
-import java.util.Arrays;
-
-// TODO: Convert this class to a record
-// To ensure its correctness, find and run the UsersTests class in the test/java directory
-public final class Users {
-    private final User[] users;
-    public Users(User[] users) {
-        this.users = users;
-    }
-    public User[] users() {
-        return users;
-    }
-    @Override
-    public String toString() {
-        return "Users{" +
-                "users=" + Arrays.toString(users) +
-                '}';
-    }
+public record Users(User[] users) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
